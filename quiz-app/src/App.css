@@ -58,3 +58,31 @@
   border-radius: 4px;
   cursor: pointer;
 }
+
+.scoreBoard {
+  position: relative;
+  height: 700px;
+}
+
+.score {
+  position: absolute;
+  width: 1024px;
+  font-size: 3em;
+  top: 250px;
+  text-align: center;
+}
+
+.playAgainBtn {
+  position: absolute;
+  font-size: 1.4em;
+  padding: 10px;
+  top: 350px;
+  background-color: rgb(46, 182, 46);
+  color: rgb(255, 255, 255);
+  width: 150px;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+  outline: none;
+  cursor: pointer;
+}
