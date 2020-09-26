@@ -28,3 +28,33 @@
   font-size: 1.8em;
   border-radius: 5px;
 }
+
+.question {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.questionBox {
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  margin-top: 5px;
+  padding: 15px;
+  box-sizing: border-box;
+  background-color: rgb(250, 250, 250);
+}
+
+.answerBtn {
+  position: relative;
+  padding: 10px;
+  background-color: #a8c4a2;
+  display: inline-block;
+  margin: 10px;
+  outline: none;
+  border: none;
+  font-size: 1em;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+}
