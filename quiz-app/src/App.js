@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import "./App.css";
 import quizApi from "./quizApi";
+import QuestionBox from "./components/QuestionBox";
 
 class App extends Component {
   state = {
     questionBank: [],
+    score: 0,
+    responses: 0,
   };
 
   //A function to invoke quizApi and proceeds to populate the questionBank state  with the result
@@ -13,6 +16,18 @@ class App extends Component {
       this.setState({
         questionBank: question,
       });
+    });
+  };
+
+  //A function to get the score and the responses of the question
+  rightAnswer = (answer, correctAnswer) => {
+    if (answer === correctAnswer) {
+      this.setState({
+        score: this.state.score + 1,
+      });
+    }
+    this.setState({
+      responses: this.state.responses < 5 ? this.state.responses + 1 : 5,
     });
   };
 
@@ -25,9 +40,18 @@ class App extends Component {
       <div className="container">
         <div className="mainTitle"> Quiz App</div>
         {this.state.questionBank.length > 0 &&
+          this.state.responses < 5 &&
           this.state.questionBank.map(
-            ({ question, answers, correct, questionId }) => <h4>{question}</h4>
+            ({ question, answers, correct, questionId }) => (
+              <QuestionBox
+                question={question}
+                options={answers}
+                key={questionId}
+                selected={(answer) => this.rightAnswer(answer, correct)}
+              />
+            )
           )}
+        {this.state.responses === 5 ? <h2>{this.state.score}</h2> : null}
       </div>
     );
   }
