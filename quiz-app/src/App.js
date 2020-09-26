@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import quizApi from "./quizApi";
 import QuestionBox from "./components/QuestionBox";
+import Result from "./components/Result";
 
 class App extends Component {
   state = {
@@ -31,6 +32,14 @@ class App extends Component {
     });
   };
 
+  playAgain = () => {
+    this.getQuestions();
+    this.setState({
+      score: 0,
+      responses: 0,
+    });
+  };
+
   componentDidMount() {
     this.getQuestions();
   }
@@ -51,7 +60,9 @@ class App extends Component {
               />
             )
           )}
-        {this.state.responses === 5 ? <h2>{this.state.score}</h2> : null}
+        {this.state.responses === 5 ? (
+          <Result score={this.state.score} playAgain={this.playAgain} />
+        ) : null}
       </div>
     );
   }
